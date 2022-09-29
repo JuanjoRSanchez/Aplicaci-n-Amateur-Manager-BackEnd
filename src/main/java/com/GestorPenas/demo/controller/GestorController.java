@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.GestorPenas.demo.DTO.LoginGestorDTO;
 import com.GestorPenas.demo.Model.Gestor;
 import com.GestorPenas.demo.service.GestorService;
 
@@ -27,21 +28,35 @@ public class GestorController {
 		this.gestorService = gestorService;
 	}
 	
+	//Devuelve todos los gestores
 	@GetMapping(value = "/")
 	public List<Gestor> getGestores(){
 		List<Gestor> aux = gestorService.getGestores();
 		return aux;
 	}
 	
+	//Devuelve un gestor por id
 	@GetMapping(value = "/{id}")
 	public Gestor getGestor(@PathVariable("id") Long id){
 		return gestorService.getGestorById(id);
 	}
+	/*
+	@GetMapping(value = "/login")
+	public int login(@RequestBody LoginGestorDTO loginGestorDTO){
+		
+		return gestorService.getLogin(loginGestorDTO);
+	}
+	*/
 	
-
+	@PostMapping(value = "/login")
+	public Long login(@RequestBody LoginGestorDTO loginGestorDTO){
+		
+		return gestorService.getLogin01(loginGestorDTO);
+	}
+	
 	@PostMapping(value = "/add")
-	public void setGestor(@RequestBody Gestor gestor) {
-		gestorService.setGestor(gestor);
+	public Long setGestor(@RequestBody Gestor gestor) {
+		return gestorService.setGestor(gestor);
 	}
 	/*
 	@PutMapping

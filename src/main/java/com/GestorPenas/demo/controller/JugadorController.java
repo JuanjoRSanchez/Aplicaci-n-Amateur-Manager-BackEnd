@@ -2,6 +2,8 @@
 package com.GestorPenas.demo.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,13 +30,20 @@ public class JugadorController {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public Jugador getListJugador(@PathVariable("id") Long id){
+	public Jugador getJugador(@PathVariable("id") Long id){
 		return jugadorService.getJugadorById(id);
 	}
 	
+	
+	@GetMapping(value = "/pena/{id}")
+	public List <Jugador> getListJugadorByPena(@PathVariable("id") int id){
+		
+		return jugadorService.getJugadorByIdPena(id);
+	}
+	
+	
 	@PostMapping(value = "/add")
 	public void setJugador(@RequestBody AddJugadorDTO addJugadorDTO) {
-		
 		
 		 jugadorService.setJugador(addJugadorDTO);
 	}

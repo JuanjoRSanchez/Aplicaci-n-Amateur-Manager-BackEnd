@@ -15,5 +15,15 @@ public interface GestorRepository extends JpaRepository<Gestor, Long>{
 	@Query
 	Optional <Gestor>  findById(Long id);
 
-
+	@Query
+	Optional <Gestor>   findByTelefono(String telefono);
+	
+	@Query
+	Optional <Gestor> findByPass(String pass);
+	
+	@Query
+	Optional <Gestor>  findByEmail(String email);
+	
+	@Query
+	Optional <Gestor> findByNombre(String nombre);
 }

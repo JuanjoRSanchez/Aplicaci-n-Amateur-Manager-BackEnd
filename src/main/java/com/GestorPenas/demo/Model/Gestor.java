@@ -26,10 +26,13 @@ public class Gestor {
 	@Column
 	private String direccion;
 	
-	@Column
+	@Column(unique = true)
 	private String telefono;
 	
-	@Column
+	@Column(unique = true)
+	private String email;
+	
+	@Column(unique = true)
 	private String pass;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -39,7 +42,9 @@ public class Gestor {
 		super();
 	}
 
-	public Gestor(Long id, String nombre, String edad, String direccion, String telefono, String pass,
+	
+
+	public Gestor(Long id, String nombre, String edad, String direccion, String telefono, String email, String pass,
 			Date fechaCreacion) {
 		super();
 		this.id = id;
@@ -47,9 +52,24 @@ public class Gestor {
 		this.edad = edad;
 		this.direccion = direccion;
 		this.telefono = telefono;
+		this.email = email;
 		this.pass = pass;
 		this.fechaCreacion = fechaCreacion;
 	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 
 	public Date getFechaCreacion() {
 		return fechaCreacion;

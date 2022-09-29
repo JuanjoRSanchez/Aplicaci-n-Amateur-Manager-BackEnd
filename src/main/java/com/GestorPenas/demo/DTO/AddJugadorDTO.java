@@ -1,8 +1,6 @@
 package com.GestorPenas.demo.DTO;
 
-
 public class AddJugadorDTO {
-
 
 	private String nombre;
 	
@@ -73,8 +71,5 @@ public class AddJugadorDTO {
 	public void setIdPena(int idPena) {
 		this.idPena = idPena;
 	}
-	
-	
-
 
 }

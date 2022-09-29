@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.GestorPenas.demo.DTO.AddPenaDTO;
 import com.GestorPenas.demo.Model.Gestor;
 import com.GestorPenas.demo.Model.Pena;
 import com.GestorPenas.demo.Repositories.GestorRepository;
@@ -42,10 +43,35 @@ public class PenaService {
 		return penaAux;
 	}
 
+	public List<Pena> getPenaByGestor(int idGestor) {
+		Long idGestorLong = (long) idGestor;
+		Optional<Gestor> gestor = gestorRepository.findById(idGestorLong);
+		Gestor gestorAux = new Gestor();
+		if (gestor.isPresent()) {
+			gestorAux = gestor.get();
+		}
+		List<Pena> penaAux = penaRepository.findByGestor(gestorAux);
+
+		return penaAux;
+	}
+
 	public void setPena(Pena pena) {
 		Optional<Gestor> gestorAux = gestorRepository.findById(pena.getGestor().getId());
 		if (gestorAux != null) {
-			 penaRepository.save(pena);
+			penaRepository.save(pena);
+		}
+	}
+
+	public void setPena01(AddPenaDTO addPenaDTO) {
+		Long idGestor = (long) addPenaDTO.getIdGestor();
+		Optional<Gestor> gestorAux = gestorRepository.findById(idGestor);
+		Pena pena = new Pena();
+		Gestor gestor = new Gestor();
+		if (gestorAux != null) {
+			gestor = gestorAux.get();
+			pena.setNombre(addPenaDTO.getNombre());
+			pena.setGestor(gestor);
+			penaRepository.save(pena);
 		}
 	}
 

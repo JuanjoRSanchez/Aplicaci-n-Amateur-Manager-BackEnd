@@ -1,5 +1,7 @@
 package com.GestorPenas.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,18 +34,30 @@ public class JugadorService {
 		return jugadorAux.get();
 	}
 
+	public List <Jugador> getJugadorByIdPena(int id) {
+		List <Jugador> jugadores = new ArrayList<Jugador>();
+		Long idPenaLong = (long) id;
+		Optional <Pena> pena = penaRepository.findById(idPenaLong);
+		if(pena.isPresent()) {
+			jugadores = jugadorRepository.findByPena(pena.get());
+		}
+		
+		return jugadores;
+	}
+	
 	public void setJugador(AddJugadorDTO addJugadorDTO) {
 		Long idPena = (long) addJugadorDTO.getIdPena();
 		Jugador jugador = new Jugador();
 
 		Optional<Pena> penaAux = penaRepository.findById(idPena);
 
-		if (penaAux != null) {
+		if (penaAux.isPresent()) {
 			jugador.setDireccion(addJugadorDTO.getDireccion());
 			jugador.setEdad(addJugadorDTO.getEdad());
 			jugador.setNombre(addJugadorDTO.getNombre());
 			jugador.setPass(addJugadorDTO.getPass());
 			jugador.setTelefono(addJugadorDTO.getTelefono());
+			jugador.setPena(penaAux.get());
 			jugadorRepository.save(jugador);
 		}
 

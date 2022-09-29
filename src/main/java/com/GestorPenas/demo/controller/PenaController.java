@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.GestorPenas.demo.DTO.AddPenaDTO;
 import com.GestorPenas.demo.Model.Pena;
 import com.GestorPenas.demo.service.PenaService;
 
@@ -33,16 +34,31 @@ public class PenaController {
 		return aux;
 	}
 	
-	@GetMapping(value = "/pena/{id}")
+	
+	@GetMapping(value = "/listPena/{idPena}")
+	public List<Pena> getListPenaByGestor(@PathVariable("idPena") String idPena){
+		int idPenaInt = Integer.parseInt(idPena);
+		List<Pena> aux = penaService.getPenaByGestor(idPenaInt);
+		return aux;
+	}
+	
+	
+	@GetMapping(value = "/{id}")
 	public Pena getPena(@PathVariable("id") Long id){
 		return penaService.getPenaById(id);
 	}
 	
-
+/*
 	@PostMapping(value = "/add")
 	public void setPena(@RequestBody Pena pena) {
 		
 		 penaService.setPena(pena);
+	}
+*/
+	@PostMapping(value = "/add")
+	public void setPena01(@RequestBody AddPenaDTO addPenaDTO) {
+		
+		 penaService.setPena01(addPenaDTO);
 	}
 	/*
 	@PutMapping
