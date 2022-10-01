@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.GestorPenas.demo.DTO.AddPartido01DTO;
 import com.GestorPenas.demo.DTO.AddResultadoDTO;
-import com.GestorPenas.demo.Model.Partido;
+import com.GestorPenas.demo.model.Partido;
 import com.GestorPenas.demo.service.PartidoService;
 
 @RestController

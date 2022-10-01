@@ -1,10 +1,10 @@
-package com.GestorPenas.demo.Repositories;
+package com.GestorPenas.demo.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.GestorPenas.demo.Model.Pista;
+import com.GestorPenas.demo.model.Pista;
 
 public interface PistaRepository extends JpaRepository<Pista, Long>{
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.GestorPenas.demo.DTO.AddPistaDTO;
-import com.GestorPenas.demo.Model.Pista;
+import com.GestorPenas.demo.model.Pista;
 import com.GestorPenas.demo.service.PistaService;
 
 @Controller

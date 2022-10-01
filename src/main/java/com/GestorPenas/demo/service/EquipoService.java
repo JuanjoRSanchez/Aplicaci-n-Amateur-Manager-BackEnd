@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.GestorPenas.demo.Model.Equipo;
-import com.GestorPenas.demo.Model.Partido;
-import com.GestorPenas.demo.Repositories.EquipoRepository;
+import com.GestorPenas.demo.model.Equipo;
+import com.GestorPenas.demo.model.Partido;
+import com.GestorPenas.demo.repositories.EquipoRepository;
 
 @Service
 public class EquipoService {

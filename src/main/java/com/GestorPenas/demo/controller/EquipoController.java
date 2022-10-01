@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;
 
-import com.GestorPenas.demo.Model.Equipo;
+import com.GestorPenas.demo.model.Equipo;
 import com.GestorPenas.demo.service.EquipoService;
 
 @Controller

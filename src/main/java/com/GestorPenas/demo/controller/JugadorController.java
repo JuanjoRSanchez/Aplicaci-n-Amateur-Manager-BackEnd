@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.GestorPenas.demo.DTO.AddJugadorDTO;
-import com.GestorPenas.demo.Model.Jugador;
+import com.GestorPenas.demo.model.Jugador;
 import com.GestorPenas.demo.service.JugadorService;
 
 @RestController

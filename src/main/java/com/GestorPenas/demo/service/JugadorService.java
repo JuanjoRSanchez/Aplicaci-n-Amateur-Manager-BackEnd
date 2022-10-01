@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.GestorPenas.demo.DTO.AddJugadorDTO;
-import com.GestorPenas.demo.Model.Jugador;
-import com.GestorPenas.demo.Model.Pena;
-import com.GestorPenas.demo.Repositories.JugadorRepository;
-import com.GestorPenas.demo.Repositories.PenaRepository;
+import com.GestorPenas.demo.model.Jugador;
+import com.GestorPenas.demo.model.Pena;
+import com.GestorPenas.demo.repositories.JugadorRepository;
+import com.GestorPenas.demo.repositories.PenaRepository;
 
 @Service
 public class JugadorService {

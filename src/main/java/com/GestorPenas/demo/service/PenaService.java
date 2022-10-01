@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.GestorPenas.demo.DTO.AddPenaDTO;
-import com.GestorPenas.demo.Model.Gestor;
-import com.GestorPenas.demo.Model.Pena;
-import com.GestorPenas.demo.Repositories.GestorRepository;
-import com.GestorPenas.demo.Repositories.PenaRepository;
+import com.GestorPenas.demo.model.Gestor;
+import com.GestorPenas.demo.model.Pena;
+import com.GestorPenas.demo.repositories.GestorRepository;
+import com.GestorPenas.demo.repositories.PenaRepository;
 
 @Service
 public class PenaService {

@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.GestorPenas.demo.DTO.AddPartido01DTO;
 import com.GestorPenas.demo.DTO.AddResultadoDTO;
-import com.GestorPenas.demo.Model.Partido;
-import com.GestorPenas.demo.Model.Pena;
-import com.GestorPenas.demo.Repositories.PartidoRepository;
+import com.GestorPenas.demo.model.Partido;
+import com.GestorPenas.demo.model.Pena;
+import com.GestorPenas.demo.repositories.PartidoRepository;
 
 @Service
 public class PartidoService {

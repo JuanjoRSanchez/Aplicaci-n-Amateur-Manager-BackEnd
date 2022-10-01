@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.GestorPenas.demo.DTO.AddPistaDTO;
-import com.GestorPenas.demo.Model.Pena;
-import com.GestorPenas.demo.Model.Pista;
-import com.GestorPenas.demo.Repositories.PistaRepository;
+import com.GestorPenas.demo.model.Pena;
+import com.GestorPenas.demo.model.Pista;
+import com.GestorPenas.demo.repositories.PistaRepository;
 
 
 @Service
