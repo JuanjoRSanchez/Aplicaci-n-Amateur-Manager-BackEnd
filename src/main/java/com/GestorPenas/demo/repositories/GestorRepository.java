@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.GestorPenas.demo.model.Gestor;
+import com.GestorPenas.demo.Model.Gestor;
 
 @Repository
 public interface GestorRepository extends JpaRepository<Gestor, Long>{

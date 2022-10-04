@@ -3,7 +3,6 @@ package com.GestorPenas.demo.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.GestorPenas.demo.DTO.AddPartido01DTO;
 import com.GestorPenas.demo.DTO.AddResultadoDTO;
-import com.GestorPenas.demo.model.Partido;
-import com.GestorPenas.demo.model.Pena;
+import com.GestorPenas.demo.Model.Partido;
+import com.GestorPenas.demo.Model.Pena;
 import com.GestorPenas.demo.repositories.PartidoRepository;
 
 @Service
@@ -45,79 +44,25 @@ public class PartidoService {
 	}
 
 	public List<Partido> getPartidos() {
-		List<Partido> partidos = new ArrayList<Partido>();
-		partidos = partidoRepository.findAll();
+		List<Partido> partidos = partidoRepository.findAll();
 
 		return partidos;
 	}
 
 	public List<Partido> getPartidosByPena(int idPena) {
 		
-		List<Partido> partidos = new ArrayList<Partido>();
 		Long id_pena = (long) idPena;
 		Pena pena = penaService.getPenaById(id_pena);
-		partidos = partidoRepository.findPartidoByPena(pena);
+		List<Partido> partidos = partidoRepository.findPartidoByPena(pena);
 
 		return partidos;
 	}
 
-	public List<Partido> getPartidosByPena(Long id) {
-		List<Partido> partido = partidoRepository.findAll();
-
-		return partido;
-	}
-
-	public void setPartido(int idPena) {
-		Partido auxPartido = new Partido();
-		Pena pena = new Pena();
-
-		Long idPenaLong = (long) idPena;
-		pena = penaService.getPenaById(idPenaLong);
-
-		auxPartido.setPena(pena);
-		partidoRepository.save(auxPartido);
-
-		List<Partido> partidos = getPartidosByPena(idPenaLong);
-		partidos.sort(Comparator.comparing(Partido::getFechaCreacion));
-		Partido NuevoPartido = partidos.get(partidos.size() - 1);
-		equipoService.setEquipo("negro", NuevoPartido);
-		equipoService.setEquipo("blanco", NuevoPartido);
-
-	}
-
-	public int setPartido01(int id, String date) {
+	public int setPartido(AddPartido01DTO addPartido01DTO) {
 		int salida = 1;
 		Partido auxPartido = new Partido();
-		Pena pena = new Pena();
-		Long idPenaLong = (long) id;
-		pena = penaService.getPenaById(idPenaLong);
-		
-		String dateString = date;
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		LocalDateTime parsedDateTime = LocalDateTime.parse(dateString, formatter);
-		
-		auxPartido.setFechaPartido(parsedDateTime);
-		auxPartido.setPena(pena);
-		
-		if(auxPartido != null) {
-			partidoRepository.save(auxPartido);
-			salida = 0;
-		}
-		
-		List<Partido> partidos = getPartidosByPena(idPenaLong);
-		partidos.sort(Comparator.comparing(Partido::getFechaCreacion));
-		Partido NuevoPartido = partidos.get(partidos.size() - 1);
-		equipoService.setEquipo("negro", NuevoPartido);
-		equipoService.setEquipo("blanco", NuevoPartido);
-		return salida;
-	}
-	
-	public int setPartido02(AddPartido01DTO addPartido01DTO) {
-		int salida = 1;
-		Partido auxPartido = new Partido();
-		Pena pena = new Pena();
 		Long idPenaLong = (long) addPartido01DTO.getIdPena();
-		pena = penaService.getPenaById(idPenaLong);
+		Pena pena = penaService.getPenaById(idPenaLong);
 		
 		String dateString = addPartido01DTO.getFechaPartido();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -125,13 +70,12 @@ public class PartidoService {
 		
 		auxPartido.setFechaPartido(parsedDateTime);
 		auxPartido.setPena(pena);
-		
-		if(auxPartido != null) {
-			partidoRepository.save(auxPartido);
+		partidoRepository.save(auxPartido);
+		if(!partidoRepository.findPartidoByPena(pena).isEmpty()) {
 			salida = 0;
 		}
 		
-		List<Partido> partidos = getPartidosByPena(idPenaLong);
+		List<Partido> partidos = getPartidosByPena(addPartido01DTO.getIdPena());
 		partidos.sort(Comparator.comparing(Partido::getFechaCreacion));
 		Partido NuevoPartido = partidos.get(partidos.size() - 1);
 		equipoService.setEquipo("negro", NuevoPartido);
@@ -140,13 +84,12 @@ public class PartidoService {
 	}
 	public int updarteResultadoEnPartido(AddResultadoDTO addResultadoDTO, int idPartido) {
 		int salida = 1;
-		Partido partido01 = new Partido();
 
 		Optional<Partido> partido = getPartido(idPartido);
 
 		if (partido.isPresent()) {
 
-			partido01 = partido.get();
+			Partido partido01 = partido.get();
 			partido01.setMarcadorBlanco(Integer.parseInt(addResultadoDTO.getResultadoBlanco()));
 			partido01.setMarcadorNegro(Integer.parseInt(addResultadoDTO.getResultadoNegro()));
 			partidoRepository.save(partido01);
@@ -158,13 +101,12 @@ public class PartidoService {
 	}
 	public int updarteResultadoEnPartido01(AddPartido01DTO addPartido01DTO) {
 		int salida = 1;
-		Partido partido01 = new Partido();
 
 		Optional<Partido> partido = getPartido(addPartido01DTO.getIdPartido());
 
 		if (partido.isPresent()) {
 
-			partido01 = partido.get();
+			Partido partido01 = partido.get();
 			partido01.setMarcadorBlanco(Integer.parseInt(addPartido01DTO.getMarcadorBlanco()));
 			partido01.setMarcadorNegro(Integer.parseInt(addPartido01DTO.getMarcadorNegro()));
 			partidoRepository.save(partido01);

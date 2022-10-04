@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.GestorPenas.demo.DTO.LoginGestorDTO;
-import com.GestorPenas.demo.model.Gestor;
+import com.GestorPenas.demo.Model.Gestor;
 import com.GestorPenas.demo.repositories.GestorRepository;
 
 @Service

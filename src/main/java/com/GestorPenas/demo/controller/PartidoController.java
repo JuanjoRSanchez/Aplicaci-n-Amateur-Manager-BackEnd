@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.GestorPenas.demo.DTO.AddPartido01DTO;
 import com.GestorPenas.demo.DTO.AddResultadoDTO;
-import com.GestorPenas.demo.model.Partido;
+import com.GestorPenas.demo.Model.Partido;
 import com.GestorPenas.demo.service.PartidoService;
 
 @RestController
@@ -48,16 +48,10 @@ public class PartidoController {
 		return partidoService.getPartidosByPena(id);
 	}
 	
-	@PostMapping(value = "/post/{id}/{date}")
-	public int setPartido011(@PathVariable int id, @PathVariable String date) {
-		
-		return partidoService.setPartido01( id, date);
-	}
-	
-	@PostMapping(value = "/posteo/")
+	@PostMapping(value = "/add/")
 	public int setPartido02(@RequestBody AddPartido01DTO addPartido01DTO) {
 		
-		return partidoService.setPartido02( addPartido01DTO );
+		return partidoService.setPartido( addPartido01DTO );
 	}
 	@PutMapping(value = "/update/{id}")
 	public int updateResultadoPartido(@PathVariable int id, @RequestBody AddResultadoDTO addresultadoDTO) {

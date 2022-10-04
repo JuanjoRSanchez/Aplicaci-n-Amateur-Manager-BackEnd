@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.GestorPenas.demo.model.Gestor;
-import com.GestorPenas.demo.model.Pena;
+import com.GestorPenas.demo.Model.Gestor;
+import com.GestorPenas.demo.Model.Pena;
 
 public interface PenaRepository extends JpaRepository<Pena, Long> {
 	

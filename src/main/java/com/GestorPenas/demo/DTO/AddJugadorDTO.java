@@ -14,7 +14,9 @@ public class AddJugadorDTO {
 	
 	private int idPena;
 
-	public AddJugadorDTO(String nombre, String edad, String direccion, String telefono, String pass, int idPena) {
+	private String idJugador;
+	public AddJugadorDTO(){}
+	public AddJugadorDTO(String nombre, String edad, String direccion, String telefono, String pass, int idPena, String idJugador) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
@@ -22,8 +24,12 @@ public class AddJugadorDTO {
 		this.telefono = telefono;
 		this.pass = pass;
 		this.idPena = idPena;
+		this.idJugador = idJugador;
 	}
 
+	public String getIdJugador(){return idJugador;}
+
+	public void setIdJugador(String idJugador){this.idJugador = idJugador;}
 	public String getNombre() {
 		return nombre;
 	}

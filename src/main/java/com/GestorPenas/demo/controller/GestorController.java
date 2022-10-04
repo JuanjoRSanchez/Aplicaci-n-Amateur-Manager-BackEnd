@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.GestorPenas.demo.DTO.LoginGestorDTO;
-import com.GestorPenas.demo.model.Gestor;
+import com.GestorPenas.demo.Model.Gestor;
 import com.GestorPenas.demo.service.GestorService;
 
 @RestController

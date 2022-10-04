@@ -1,4 +1,4 @@
-package com.GestorPenas.demo.model;
+package com.GestorPenas.demo.Model;
 
 import java.time.LocalDateTime;
 import java.util.Date;
